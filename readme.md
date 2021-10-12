@@ -87,27 +87,51 @@ This is an list things you need to running the project and how to install them.
     composer install
     ```
 
-3.  Start local server
+3.  Create environment local files in the root directory of the project with your database credentials
 
-4.  Create a database
+    ```sh
+    file: .env
+
+    APP_NAME=Polls
+    APP_ENV=local
+    APP_KEY=base64:6+jqLtZTMIB2BWEaUBq0Ac7aiJ0mEVtzGXKfFzdsBWA=
+    APP_DEBUG=true
+    APP_LOG_LEVEL=debug
+    APP_URL=http://localhost
+
+    DB_CONNECTION=your_database_type
+    DB_HOST=your_database_host
+    DB_PORT=your_database_port
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
+    ```
+
+4)  Create a database
 
     ```sql
       create database polls character set utf8mb4 collate utf8mb4_spanish_ci;
     ```
 
-5.  Use a database
+5)  Use a database
 
     ```sql
       use polls;
     ```
 
-6.  Create tables and insert data in database
+6)  Create tables and insert data in database
 
     ```sh
       php artisan migrate:refresh --seed
     ```
 
-7.  Access to page in local server
+7)  Start local server with command or use XAMPP, Laragon or other alternative
+
+    ```sh
+      php artisan serve
+    ```
+
+8)  Access to page in local server
 
 <!-- LICENSE -->
 
