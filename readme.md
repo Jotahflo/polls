@@ -13,7 +13,7 @@
     <a href="https://github.com/Jotahflo/polls"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://Jotahflo.github.io/polls">View Page</a>
+    <a href="https://pollsjf.herokuapp.com/">View Page</a>
     ·
     <a href="https://github.com/Jotahflo/polls/issues">Report Bug</a>
     ·
