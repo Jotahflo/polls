@@ -16,7 +16,7 @@ class ReportsController extends Controller
         $answersUsers = array();
         foreach ($users as $user){
             $answerUser = array();
-            $answers = Answer::where('id_user', '=', $user->id)->select('id_question','content')->get();
+            $answers = Answer::where('id_user', '=', $user->id)->select('content')->get();
 
             array_push($answerUser, $user->full_name);
             foreach ($answers as $answer){
