@@ -5,74 +5,56 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/public/css/app.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
     <title>Encuesta</title>
   </head>
   <body>
-    <h1>Encuesta</h1>
-    <p>Por favor, responda las siguientes preguntas:</p>
-    <form method="post">
-      <div class="form-group">
-        <label for="textFullName">1. Ingrese su nombre</label>
-        <input type="text" class="form-control" id="inputFullName" placeholder="Nombre...">
-      </div>
-      <div class="checkbox">
-        <label for="textGender">2. Eliga su genero</label>
-        <label>
-          <input type="radio"> Hombre
-        </label>
-        <label>
-          <input type="radio"> Mujer
-        </label>
-      </div>
-      <div class="checkbox">
-        <label for="textHobby">3. ¿Tiene algún hobby?</label>
-        <label>
-          <input type="radio"> Ninguno
-        </label>
-        <label>
-          <input type="radio"> Deporte
-        </label>
-        <label>
-          <input type="radio"> Musical
-        </label>
-        <label>
-          <input type="radio"> Cocina
-        </label>
-        <label>
-          <input type="radio"> Literario
-        </label>
-        <label>
-          <input type="radio"> Manualidades
-        </label>
-        <label>
-          <input type="radio"> Juegos
-        </label>
-        <label>
-          <input type="radio"> Modelismo
-        </label>
-        <label>
-          <input type="radio"> Baile
-        </label>
-        <label>
-          <input type="radio"> Cine
-        </label>
-        <label>
-          <input type="radio"> Otro
-        </label>
-      </div>
-      <div class="form-group">
-        <label for="textHowLongHobby">4. A su hobby, ¿cuánto tiempo le dedica al mes?</label>
-        <input type="number" class="form-control" id="inputHowLongHobby" placeholder="Tiempo de hobby...">
-      </div>
-      <button type="submit" class="btn btn-default">Siguiente</button>
-    </form>
+    <div class="container-fluid">
+        <h1>Encuesta</h1>
+        <p>Por favor, responda las siguientes preguntas.</p>
+        <form id="poll" method="post" action="{{URL::to('/')}}">
+          {{ csrf_field() }}
+          
+          @foreach ($questions as $question)
+            <div id="question{{ $loop->iteration }}" class="row">
+              <div class="form-group col-xs-12 col-md-12">
+                <label for="{{ $question->type_question }}">{{ $question->title }}</label>
+                @yield($question->type_question)
+              </div>
+            </div>
+          @endforeach
 
-    @foreach ($questions as $question)
-    <p>{{ $question->title }}</p>
-    <p>{{ $question->type_question }}</p>
-    @endforeach
-    <script src="/public/js/app.js"></script>
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-primary">Siguiente</button>
+            </div>
+          </div>
+        </form>
+        @if ($errors->any())
+          @foreach ($errors->all() as $error)
+            <div class="alert alert-warning" style="margin-top: 1rem;" role="alert">{{ $error }}</div>
+          @endforeach
+        @endif
+    </div>
+    <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+      document.getElementById('question4').style.display = "none";
+      document.getElementById('hrsHobby').value = 0;
+
+      function onQuestion4(obj){   
+        if (obj.checked){  
+          document.getElementById('question4').style.display = "block";
+          document.getElementById('hrsHobby').value = "";
+        }   
+      }
+
+      function offQuestion4(obj){   
+        if (obj.checked){  
+          document.getElementById('question4').style.display = "none";
+          document.getElementById('hrsHobby').value = 0;
+        }   
+      }
+    </script>
   </body>
 </html>

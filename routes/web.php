@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'QuestionsController@getAll');
+Route::get('/', 'PollsController@index');
+Route::post('/', 'PollsController@store');
 
-Route::get('/report', function () {
-    return view('report');
-});
+Route::get('/report', 'ReportsController@index');
+Route::post('/report', 'ReportsController@exportReport');
