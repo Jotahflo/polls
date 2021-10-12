@@ -104,7 +104,7 @@ This is an list things you need to running the project and how to install them.
 6.  Create tables and insert data in database
 
     ```sh
-      php artisan migrate:fresh --seed
+      php artisan migrate:refresh --seed
     ```
 
 7.  Access to page in local server
