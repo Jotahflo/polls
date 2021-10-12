@@ -69,7 +69,15 @@ To get a local copy up and running this project follow these simple example step
 
 This is an list things you need to running the project and how to install them.
 
-- install composer in linux (In windows, download and run [Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe))
+- Installed PHP 5.6.4, MariaBD 10.6.4 and nginx (only is important to have the same PHP version) (In CentOS/RHEL, remplacement "apt-get" for "yum") (In Windows, download from [php.zip](https://windows.php.net/downloads/releases/archives/php-5.6.9-Win32-VC11-x64.zip))
+
+  ```sh
+  sudo apt-get install php5-dev php5-cli php5 php5-pear
+  sudo apt-get install mariadb-client mariadb-server
+  sudo apt-get install nginx
+  ```
+
+- Installed composer in linux (In windows, download from [Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe) and run)
 
   ```sh
   php composer-setup.php --install-dir=bin --filename=composer

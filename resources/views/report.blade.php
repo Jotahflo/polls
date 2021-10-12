@@ -11,16 +11,18 @@
   </head>
   <body>
     <div class="container-fluid">
-      <h1>Resultados Encuesta</h1>
       <div class="row" style="padding-bottom: 1rem;">
+        <div class="col-sm-8">
+          <h1>Resultados Encuesta</h1>
+        </div>
         <form id="poll" method="post" action="{{URL::to('/report')}}">
           {{ csrf_field() }}
-          <div class="col-sm-2">
-            <button type="submit" class="btn btn-default">Exportar Resultados</button>
+          <div class="col-sm-2" style="margin-top: 22px;">
+            <button type="submit" class="btn btn-success">Exportar Resultados</button>
           </div>
         </form>
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-default" onclick="window.location='{{ url("/") }}'">Volver a la encuesta</button>
+        <div class="col-sm-2" style="margin-top: 22px;">
+          <button type="submit" class="btn btn-primary" onclick="window.location='{{ url("/") }}'">Volver a la encuesta</button>
         </div>
       </div>
       <p>A continuacion, usted puede ver los resultados de quienes han respondido la encuesta.</p>

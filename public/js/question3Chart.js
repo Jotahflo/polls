@@ -2,7 +2,7 @@ const dataQuestion3 = {
   labels: labelsQuestion3Chart,
   datasets: [
     {
-      label: "My First Dataset",
+      label: "Cantidad de personas, segun hobby",
       data: dataQuestion3Chart,
       backgroundColor: [
         "rgb(255, 99, 132)",
