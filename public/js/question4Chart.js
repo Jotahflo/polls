@@ -1,14 +1,23 @@
+var backgroundColorChart4 = [];
+
+var dynamicColors = function() {
+  var r = Math.floor(Math.random() * 255);
+  var g = Math.floor(Math.random() * 255);
+  var b = Math.floor(Math.random() * 255);
+  return "rgb(" + r + "," + g + "," + b + ")";
+};
+
+for (let i = 0; i < dataQuestion4Chart.length; i++) {
+  backgroundColorChart4.push(dynamicColors());
+}
+
 const dataQuestion4 = {
   labels: labelsQuestion4Chart,
   datasets: [
     {
-      label: "Cantidad de personas, segun horas de hobby",
+      label: "Las mayores horas gastadas en hobbys",
       data: dataQuestion4Chart,
-      backgroundColor: [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 205, 86)",
-      ],
+      backgroundColor: backgroundColorChart4,
       hoverOffset: 4,
     },
   ],
@@ -16,7 +25,18 @@ const dataQuestion4 = {
 const configQuestion4 = {
   type: "doughnut",
   data: dataQuestion4,
-  options: {},
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: dataQuestion4.datasets[0].label,
+      },
+      legend: {
+        display: true,
+        position: "bottom",
+      },
+    },
+  },
 };
 
 var question4Chart = new Chart(

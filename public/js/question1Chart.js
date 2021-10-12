@@ -1,14 +1,23 @@
+var backgroundColorChart1 = [];
+
+var dynamicColors = function() {
+  var r = Math.floor(Math.random() * 255);
+  var g = Math.floor(Math.random() * 255);
+  var b = Math.floor(Math.random() * 255);
+  return "rgb(" + r + "," + g + "," + b + ")";
+};
+
+for (let i = 0; i < dataQuestion1Chart.length; i++) {
+  backgroundColorChart1.push(dynamicColors());
+}
+
 const dataQuestion1 = {
   labels: labelsQuestion1Chart,
   datasets: [
     {
-      label: "Cantidad de personas, segun nombre",
+      label: "Las personas que más contestaron",
       data: dataQuestion1Chart,
-      backgroundColor: [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 205, 86)",
-      ],
+      backgroundColor: backgroundColorChart1,
       hoverOffset: 4,
     },
   ],
@@ -16,7 +25,18 @@ const dataQuestion1 = {
 const configQuestion1 = {
   type: "doughnut",
   data: dataQuestion1,
-  options: {},
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: dataQuestion1.datasets[0].label,
+      },
+      legend: {
+        display: true,
+        position: "bottom",
+      },
+    },
+  },
 };
 
 var question1Chart = new Chart(
