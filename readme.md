@@ -115,31 +115,26 @@ This is an list things you need to running the project and how to install them.
     DB_PASSWORD=your_database_password
     ```
 
-4)  Create a database
+4.  Create and use a database
 
     ```sql
       create database polls character set utf8mb4 collate utf8mb4_spanish_ci;
-    ```
-
-5)  Use a database
-
-    ```sql
       use polls;
     ```
 
-6)  Create tables and insert data in database
+5.  Create tables and insert data in database
 
     ```sh
       php artisan migrate:refresh --seed
     ```
 
-7)  Start local server with command or use XAMPP, Laragon or other alternative
+6.  Start local server with command or use XAMPP, Laragon or other alternative
 
     ```sh
       php artisan serve
     ```
 
-8)  Access to page in local server
+7.  Access to page in local server
 
 <!-- LICENSE -->
 
