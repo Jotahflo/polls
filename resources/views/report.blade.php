@@ -12,9 +12,31 @@
   <body>
     <div class="container-fluid">
       <h1>Resultados Encuesta</h1>
+      <div class="row" style="padding-bottom: 1rem;">
+        <form id="poll" method="post" action="{{URL::to('/report')}}">
+          {{ csrf_field() }}
+          <div class="col-sm-2">
+            <button type="submit" class="btn btn-default">Exportar Resultados</button>
+          </div>
+        </form>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-default" onclick="window.location='{{ url("/") }}'">Volver a la encuesta</button>
+        </div>
+      </div>
       <p>A continuacion, usted puede ver los resultados de quienes han respondido la encuesta.</p>
         <div class="row">
-          
+          <div class="col-sm-12 col-md-6 col-lg-3" style="width:24vw">
+            <canvas id="question1Chart"></canvas>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-3" style="width:24vw">
+            <canvas id="question2Chart"></canvas>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-3" style="width:24vw">
+            <canvas id="question3Chart"></canvas>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-3" style="width:24vw">
+            <canvas id="question4Chart"></canvas>
+          </div>
         </div>
         <div class="table-responsive">
           <table class="table table-hover">
@@ -45,18 +67,22 @@
             </tbody>
           </table>
         </div>
-        <div class="row">
-          <form id="poll" method="post" action="{{URL::to('/report')}}">
-            {{ csrf_field() }}
-            <div class="col-xs-6">
-              <button type="submit" class="btn btn-default">Exportar Resultados</button>
-            </div>
-          </form>
-          <div class="col-xs-6">
-            <button type="submit" class="btn btn-default" onclick="window.location='{{ url("/") }}'">Volver a la encuesta</button>
-          </div>
-        </div>
     </div>
+    <script>
+      const labelsQuestion1Chart = {!! json_encode($labelsQuestion1Chart) !!};
+      const dataQuestion1Chart = {!! json_encode($dataQuestion1Chart) !!};
+      const labelsQuestion2Chart = {!! json_encode($labelsQuestion2Chart) !!};
+      const dataQuestion2Chart = {!! json_encode($dataQuestion2Chart) !!};
+      const labelsQuestion3Chart = {!! json_encode($labelsQuestion3Chart) !!};
+      const dataQuestion3Chart = {!! json_encode($dataQuestion3Chart) !!};
+      const labelsQuestion4Chart = {!! json_encode($labelsQuestion4Chart) !!};
+      const dataQuestion4Chart = {!! json_encode($dataQuestion4Chart) !!};
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" type="text/javascript"></script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/question1Chart.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/question2Chart.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/question3Chart.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/question4Chart.js') }}" type="text/javascript"></script>
   </body>
 </html>

@@ -18,7 +18,7 @@
           
           @foreach ($questions as $question)
             <div id="question{{ $loop->iteration }}" class="row">
-              <div class="form-group col-xs-12 col-md-12">
+              <div class="form-group col-sm-12 col-md-12">
                 <label for="{{ $question->type_question }}">{{ $question->title }}</label>
                 @yield($question->type_question)
               </div>
@@ -26,7 +26,7 @@
           @endforeach
 
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-sm-12">
               <button type="submit" class="btn btn-primary">Siguiente</button>
             </div>
           </div>
